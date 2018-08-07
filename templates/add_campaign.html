@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Add Campaign</title>
+    </head>
+    <body>
+        <h1> Add New Campaign </h1>
+
+        {% if error %}
+        <p><strong> Error: </strong> {{error}}</p>
+        {% endif %}
+
+        <form action = 'added' method='POST'>
+            <p><label><b>Campaign Title:</b></label>
+            <input type="text" name="username" required></p>
+            <p><label><b>Campaign Message:</b></label>
+            <textarea rows="4" cols="50" name="message">Enter your message here...</textarea></p>
+            <p><label><b>Receive:</b></label>
+            <input type = 'file' name = 'file'/></p>
+            <p><label><b>Send Time:</b></label>
+            <input type="radio" name="dt"> now
+            <input type="datetime-local" name="username" value="2019-06-12T19:30"></p>
+            <p><button type="submit">Save</button></p>
+        </form>
+
+    </body>
+</html>
+
