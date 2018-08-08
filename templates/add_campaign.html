@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="static/jsfile.js"></script>
+        <link rel="stylesheet" type="text/css" href="./static/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <title> Add Campaign</title>
+
     </head>
     <body>
         <h1> Add New Campaign </h1>
@@ -10,19 +14,57 @@
         <p><strong> Error: </strong> {{error}}</p>
         {% endif %}
 
-        <form action = 'added' method='POST'>
+        <form action = 'added' method='POST' enctype =multipart/form-data>
             <p><label><b>Campaign Title:</b></label>
-            <input type="text" name="username" required></p>
+            <input type="text" name="title" required></p>
             <p><label><b>Campaign Message:</b></label>
-            <textarea rows="4" cols="50" name="message">Enter your message here...</textarea></p>
+            <textarea name="message" value="" id="message"></textarea>
+            <p><span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining</p>
+            <p>Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span></p>
             <p><label><b>Receive:</b></label>
             <input type = 'file' name = 'file'/></p>
             <p><label><b>Send Time:</b></label>
-            <input type="radio" name="dt"> now
-            <input type="datetime-local" name="username" value="2019-06-12T19:30"></p>
+            <input type="datetime-local" name="created" value='2019-06-12T19:30'></p>
+
             <p><button type="submit">Save</button></p>
         </form>
 
+    <script>
+        $(document).ready(function(){
+
+            part1Count = 160;
+            part2Count = 145;
+            part3Count = 152;
+
+            $('#message').keyup(function(){
+                var chars = $(this).val().length;
+                messages = 0;
+                remaining = 0;
+                total = 0;
+            if (chars <= part1Count) {
+                messages = 1;
+                remaining = part1Count - chars;
+            } else if (chars <= (part1Count + part2Count)) {
+                messages = 2;
+                remaining = part1Count + part2Count - chars;
+            } else if (chars > (part1Count + part2Count)) {
+                moreM = Math.ceil((chars - part1Count - part2Count) / part3Count) ;
+                remaining = part1Count + part2Count + (moreM * part3Count) - chars;
+                messages = 2 + moreM;
+            }
+            $('#remaining').text(remaining);
+            $('#messages').text(messages);
+            $('#total').text(chars);
+            if (remaining > 1) $('.cplural').show();
+                else $('.cplural').hide();
+            if (messages > 1) $('.mplural').show();
+                else $('.mplural').hide();
+            if (chars > 1) $('.tplural').show();
+                else $('.tplural').hide();
+        });
+            $('#message').keyup();
+        });
+    </script>
     </body>
 </html>
 

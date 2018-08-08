@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <link rel="stylesheet" type="text/css" href="./static/style.css">
         <title>Campaign</title>
 
     </head>
@@ -20,7 +20,7 @@
                 <th> Campaign Title </th>
                 <th> Message </th>
                 <th> Send DateTime </th>
-                <th> Status </th>
+
                 <th> Duplicate </th>
             </tr>
         {% for campaign in campaigns %}
@@ -28,11 +28,8 @@
                 <td> {{campaign.title}}</td>
                 <td> {{campaign.message}}</td>
                 <td> {{campaign.created}}</td>
-                <td> {{campaign.status}}</td>
+
                 <td> Duplicate</td>
-                <!--<td> <a href="{{url_for('getnumber', number_details=campaign.id)}}">{{campaign.status}}</a></td>
-                <td> <a href="{{url_for('new_campaign', new_details=campaign.id)}}">Duplicate</a></td>
-                -->
             </tr>
         {% endfor %}
         </table>

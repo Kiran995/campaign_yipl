@@ -21,3 +21,7 @@ td, th {
     padding: 8px;
 }
 
+#message {
+    height: 80px;
+    width: 250px;
+}
