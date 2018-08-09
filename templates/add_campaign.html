@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="static/jsfile.js"></script>
         <link rel="stylesheet" type="text/css" href="./static/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <title> Add Campaign</title>
-
+        <script src="./static/jquery.min.js"></script>
+        <script src="./static/papaparse.min.js"></script>
+        <script src="./static/custom.js"></script>
     </head>
     <body>
         <h1> Add New Campaign </h1>
@@ -14,7 +14,8 @@
         <p><strong> Error: </strong> {{error}}</p>
         {% endif %}
 
-        <form action = 'added' method='POST' enctype =multipart/form-data>
+        <form id="add-campaign-form" action='added' method='POST' enctype='multipart/form-data'>
+            <input type="hidden" name="campaign_id" value="{{id}}">
             <p><label><b>Campaign Title:</b></label>
             <input type="text" name="title" required></p>
             <p><label><b>Campaign Message:</b></label>
@@ -22,11 +23,11 @@
             <p><span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining</p>
             <p>Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span></p>
             <p><label><b>Receive:</b></label>
-            <input type = 'file' name = 'file'/></p>
+            <input type='file' name='file' id="file"/></p>
             <p><label><b>Send Time:</b></label>
             <input type="datetime-local" name="created" value='2019-06-12T19:30'></p>
-
-            <p><button type="submit">Save</button></p>
+            <input type="hidden" name="hidden" id="hidden">
+            <p><button type="submit" id="save">Save</button></p>
         </form>
 
     <script>

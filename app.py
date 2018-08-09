@@ -4,6 +4,7 @@ import datetime
 import os
 from werkzeug.utils import secure_filename
 import csv
+import json
 
 from flask_sqlalchemy import SQLAlchemy
 #from app.views import app
@@ -68,53 +69,29 @@ def allowed_file(filename):
 def add():
     return render_template('add_campaign.html')
 
-@app.route('/added', methods=['POST'])
+@app.route('/added', methods=['GET','POST'])
 def added():
-    error = None
-
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No files part')
-            print("===============")
-            return redirect(request.url)
-        f = request.files['file']
-        if f.filename == '':
-            flash('No files selected')
-            print("---------------")
-            return redirect(request.url)
-        if f and allowed_file(f.filename):
-            # f = request.files['file']
-            file = secure_filename(f.filename)
-            filename = f.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
-            print(filename)
-            flash('Successfully uploaded file')
-
     camp = Campaign(request.form['title'], request.form['message'], request.form['created'])
-    #contact = Contact(request.form['files'])
+    db.session.add(camp)
+    db.session.commit()
+    print(camp.id)
 
-    csvfile = request.files['file']
-    print(csvfile)
-    print('aaaaaaaaaaaaaa')
-    # with open('file', newline='') as myFile:
-    #     reader = csv.reader(myFile)
-    #     for row in reader:
-    #         print(row)
 
-    reader = csvfile.read()
-    data = list(reader)
-    #print(reader)
-    for data in reader:
-        print("[[[[[[[[[[[[[[[[[[[")
-        print(data)
+    data = request.form['hidden']
+    data = json.loads(data)
 
-    # csv_dicts = [{k: v for k, v in row.items()} for row in csv.DictReader(reader.splitlines(), skipinitialspace=True)]
+    for item in data:
+        name = item['Name']
+        number = item['Number']
+
+    contact = Contact(number, camp.id)
+    db.session.add(contact)
+    db.session.commit()
 
     expected_datetime = request.form['created']
     print(expected_datetime)
     current_datetime = datetime.datetime.now()
     print(current_datetime)
-    db.session.add(camp)
-    db.session.commit()
     campaigns = Campaign.query.all()
     return render_template('campaign.html', campaigns=campaigns)
 
