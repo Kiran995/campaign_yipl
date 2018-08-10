@@ -12,6 +12,7 @@
             <h2><strong>Campaign</strong></h2>
             <form action='add' method="POST">
                 <input class="btn" type="submit" value="NEW" />
+                <a href='/logout'>Logout</a>
             </form>
         </div>
         <div class="main">
@@ -20,7 +21,7 @@
                 <th> Campaign Title </th>
                 <th> Message </th>
                 <th> Send DateTime </th>
-
+                <th> Status</th>
                 <th> Duplicate </th>
             </tr>
         {% for campaign in campaigns %}
@@ -28,7 +29,7 @@
                 <td> {{campaign.title}}</td>
                 <td> {{campaign.message}}</td>
                 <td> {{campaign.created}}</td>
-
+                <td> <a href="{{url_for('getContacts', campaign_details=campaign.id)}}">Status </a></td>
                 <td> Duplicate</td>
             </tr>
         {% endfor %}

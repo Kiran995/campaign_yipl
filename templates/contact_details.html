@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Contact Detail</title>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+
+                <th>Contact Number</th>
+            </tr>
+            {% for contact in contacts %}
+            <tr>
+
+                    <td>{{contact}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+
+</html>

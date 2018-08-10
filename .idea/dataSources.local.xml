@@ -10,5 +10,14 @@
       <user-name>postgres</user-name>
       <introspection-schemas>postgres:public</introspection-schemas>
     </data-source>
+    <data-source name="campaign@localhost" uuid="0817bf5b-ec10-4746-ab4f-408246712351">
+      <database-info product="PostgreSQL" version="9.5.13" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-schemas>campaign:public</introspection-schemas>
+    </data-source>
   </component>
 </project>
