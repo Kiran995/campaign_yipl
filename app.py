@@ -53,6 +53,7 @@ class Campaign(db.Model):
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String(10))
+    number_status = db.Column(db.String(20), default='Not Sent')
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'))
 
     def __init__(self, number, camp_id):
