@@ -4,8 +4,10 @@ import datetime
 import os
 import csv
 import json
+import phonenumbers
 from flask_migrate import Migrate
 from collections import OrderedDict
+from flask import jsonify
 
 from flask_sqlalchemy import SQLAlchemy
 #from app.views import app
@@ -36,6 +38,7 @@ class Campaign(db.Model):
     title = db.Column(db.String(80))
     message = db.Column(db.String(255))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    status = db.Column(db.String(20), default='Not Sent')
     address = db.relationship('Contact', backref='campaign')
 
     def __init__(self, title, message, created):
@@ -71,7 +74,6 @@ def login():
     if request.form['username']  == 'admin' and request.form['password'] == 'admin':
         session['logged_in'] = True
         campaigns = Campaign.query.all()
-        print('===============================')
         print(campaigns)
         return render_template('campaign.html', campaigns=campaigns)
     else:
@@ -91,13 +93,41 @@ def allowed_file(filename):
 def add():
     return render_template('add_campaign.html')
 
+@app.route('/valid', methods=['GET','POST'])
+def valid():
+
+    data = request.form['data']
+    data = json.loads(data)
+    print(data)
+
+    valid_count = 0
+    invalid_count = 0
+    total_count = 0
+
+    for item in data:
+        # name = item['Name']
+        number = item['Number']
+        total_count = total_count + 1
+        for number in phonenumbers.PhoneNumberMatcher(number, "NP"):
+            valid_count = valid_count + 1
+        print(number)
+
+    invalid_count = total_count - valid_count
+    return jsonify({'valid_count': valid_count, 'invalid_count': invalid_count})
+
+
 @app.route('/added', methods=['GET','POST'])
 def added():
     camp = Campaign(request.form['title'], request.form['message'], request.form['created'])
     db.session.add(camp)
     db.session.commit()
     print(camp.id)
+    # expected_datetime = request.form['created']
+    # print(expected_datetime)
+    # current_datetime = datetime.datetime.now()
+    # print(current_datetime)
 
+    # if (expected_datetime )
 
     data = request.form['data']
     data = json.loads(data)
@@ -108,12 +138,8 @@ def added():
         number = item['Number']
         contacts = Contact(number, camp.id)
         db.session.add(contacts)
-    db.session.commit()
 
-    expected_datetime = request.form['created']
-    print(expected_datetime)
-    current_datetime = datetime.datetime.now()
-    print(current_datetime)
+    db.session.commit()
     campaigns = Campaign.query.all()
     return render_template('campaign.html', campaigns=campaigns)
 
@@ -121,21 +147,35 @@ def added():
 def getContacts():
     id=request.args.get('campaign_details')
     print(id)
-
     records = []
+    count = 0;
+    total_count = 0;
+    invalid_count = 0;
 
     for rec in Contact.query.filter_by(campaign_id=id).all():
         record = rec.number
-        print(rec.number, rec.campaign_id)
+        validity = "invalid"
+        total_count = total_count + 1
+        for record in phonenumbers.PhoneNumberMatcher(record, "NP"):
+            validity = "valid"
+            count = count + 1
+        print(rec.number, rec.campaign_id, validity)
         records.append(record)
-    # contacts = OrderedDict([
-    #     ('id', contact.id), ('number', contact.number)
-    #     for contact in Contact.objects.all()
-    # ])
-    print("get part************")
-    print(id)
+
+    invalid_count = total_count - count
+
+    print(count)
+    print('invalid')
+    print(invalid_count)
+
     return render_template('contact_details.html', contacts=records)
 
+@app.route('/duplicate_camp', methods=['POST', 'GET'])
+def duplicate_camp():
+    id=request.args.get('campaign_details')
+    data = db.session.query(Campaign).filter_by(id=id).first()
+    print(id)
+    return render_template('add_campaign.html', Campaign_title = data.title, Campaign_messages = data.message)
 
 if __name__ == '__main__':
     app.debug=True

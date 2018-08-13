@@ -6,18 +6,23 @@
     </head>
 
     <body>
-        <table>
-            <tr>
+        <div class="main">
+            <table>
+                <tr>
 
-                <th>Contact Number</th>
-            </tr>
-            {% for contact in contacts %}
-            <tr>
+                    <th>Contact Number</th>
+                    <th>Status</th>
+                </tr>
+                {% for contact in contacts %}
+                <tr>
 
-                    <td>{{contact}}</td>
-            </tr>
-            {% endfor %}
-        </table>
+                        <td>{{contact}}</td>
+
+                        <td>{{validity}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 
 </html>

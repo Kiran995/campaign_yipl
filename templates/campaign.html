@@ -30,7 +30,7 @@
                 <td> {{campaign.message}}</td>
                 <td> {{campaign.created}}</td>
                 <td> <a href="{{url_for('getContacts', campaign_details=campaign.id)}}">Status </a></td>
-                <td> Duplicate</td>
+                <td> <a href="{{url_for('duplicate_camp', campaign_details=campaign.id)}}">Duplicate</td>
             </tr>
         {% endfor %}
         </table>

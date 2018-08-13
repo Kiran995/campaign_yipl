@@ -17,9 +17,9 @@
         <form id="add-campaign-form" action='added' method='POST' enctype='multipart/form-data'>
             <input type="hidden" name="campaign_id" value="{{id}}">
             <p><label><b>Campaign Title:</b></label>
-            <input type="text" name="title" required></p>
+            <input type="text" name="title" value="{{Campaign_title}}" required></p>
             <p><label><b>Campaign Message:</b></label>
-            <textarea name="message" value="" id="message"></textarea>
+            <textarea name="message" id="message">{{Campaign_messages}}</textarea>
             <p><span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining</p>
             <p>Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span></p>
             <p><label><b>Receive:</b></label>

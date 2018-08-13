@@ -26,7 +26,11 @@ target_metadata = current_app.extensions['migrate'].db.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-
+# context.configure(
+#     connection=connection,
+#     target_metadata=target_metadata,
+#     compare_type=True
+# )
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -73,7 +77,8 @@ def run_migrations_online():
     context.configure(connection=connection,
                       target_metadata=target_metadata,
                       process_revision_directives=process_revision_directives,
-                      **current_app.extensions['migrate'].configure_args)
+                      **current_app.extensions['migrate'].configure_args,
+                      compare_type=True)
 
     try:
         with context.begin_transaction():

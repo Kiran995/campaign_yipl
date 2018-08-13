@@ -61,8 +61,8 @@
     <schema id="13" parent="3" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2018-08-10.15:02:45.941</IntrospectionTimestamp>
-      <IntrospectionStateNumber>811</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-13.14:23:17.412</IntrospectionTimestamp>
+      <IntrospectionStateNumber>860</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -117,7 +117,7 @@
     </table>
     <table id="24" parent="13" name="campaign">
       <ObjectId>16488</ObjectId>
-      <StateNumber>811</StateNumber>
+      <StateNumber>860</StateNumber>
     </table>
     <table id="25" parent="13" name="contact">
       <ObjectId>16507</ObjectId>
@@ -172,18 +172,24 @@
       <StateNumber>811</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <index id="34" parent="24" name="campaign_pkey">
+    <column id="34" parent="24" name="status">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>860</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="35" parent="24" name="campaign_pkey">
       <ObjectId>16492</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="35" parent="24" name="campaign_pkey">
+    <key id="36" parent="24" name="campaign_pkey">
       <ObjectId>16493</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>campaign_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="36" parent="25" name="id">
+    <column id="37" parent="25" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -192,30 +198,30 @@
       <TypeId>23</TypeId>
       <SequenceName>contact_id_seq</SequenceName>
     </column>
-    <column id="37" parent="25" name="number">
+    <column id="38" parent="25" name="number">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
       <StateNumber>811</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="38" parent="25" name="campaign_id">
+    <column id="39" parent="25" name="campaign_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>811</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="39" parent="25" name="contact_pkey">
+    <index id="40" parent="25" name="contact_pkey">
       <ObjectId>16511</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="40" parent="25" name="contact_pkey">
+    <key id="41" parent="25" name="contact_pkey">
       <ObjectId>16512</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>contact_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="41" parent="25" name="contact_campaign_id_fkey">
+    <foreign-key id="42" parent="25" name="contact_campaign_id_fkey">
       <ObjectId>16513</ObjectId>
       <ColNames>campaign_id</ColNames>
       <RefTableId>16488</RefTableId>
@@ -224,7 +230,7 @@
       <RefKeyName>campaign_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="42" parent="26" name="id">
+    <column id="43" parent="26" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -233,24 +239,24 @@
       <TypeId>23</TypeId>
       <SequenceName>user_id_seq</SequenceName>
     </column>
-    <column id="43" parent="26" name="username">
+    <column id="44" parent="26" name="username">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>811</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="26" name="password">
+    <column id="45" parent="26" name="password">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>811</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="45" parent="26" name="user_pkey">
+    <index id="46" parent="26" name="user_pkey">
       <ObjectId>16503</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="46" parent="26" name="user_pkey">
+    <key id="47" parent="26" name="user_pkey">
       <ObjectId>16504</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>
