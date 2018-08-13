@@ -8,7 +8,6 @@ import phonenumbers
 from flask_migrate import Migrate
 from collections import OrderedDict
 from flask import jsonify
-
 from flask_sqlalchemy import SQLAlchemy
 #from app.views import app
 
@@ -38,13 +37,14 @@ class Campaign(db.Model):
     title = db.Column(db.String(80))
     message = db.Column(db.String(255))
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    schedule = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     status = db.Column(db.String(20), default='Not Sent')
     address = db.relationship('Contact', backref='campaign')
 
-    def __init__(self, title, message, created):
+    def __init__(self, title, message, schedule):
         self.title = title
         self.message = message
-        self.created = created
+        self.schedule = schedule
 
 
     def __repr__(self):
@@ -118,16 +118,17 @@ def valid():
 
 @app.route('/added', methods=['GET','POST'])
 def added():
-    camp = Campaign(request.form['title'], request.form['message'], request.form['created'])
+    camp = Campaign(request.form['title'], request.form['message'], request.form['schedule'])
+    current_datetime = datetime.datetime.now()
+    scheduled_datetime = request.form['schedule']
+    scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M")
+    if (scheduled_datetime > current_datetime):
+        camp.status = 'Queued'
+    else:
+        camp.status = 'Sent'
     db.session.add(camp)
     db.session.commit()
     print(camp.id)
-    # expected_datetime = request.form['created']
-    # print(expected_datetime)
-    # current_datetime = datetime.datetime.now()
-    # print(current_datetime)
-
-    # if (expected_datetime )
 
     data = request.form['data']
     data = json.loads(data)
@@ -148,25 +149,14 @@ def getContacts():
     id=request.args.get('campaign_details')
     print(id)
     records = []
-    count = 0;
-    total_count = 0;
-    invalid_count = 0;
 
     for rec in Contact.query.filter_by(campaign_id=id).all():
         record = rec.number
         validity = "invalid"
-        total_count = total_count + 1
         for record in phonenumbers.PhoneNumberMatcher(record, "NP"):
             validity = "valid"
-            count = count + 1
         print(rec.number, rec.campaign_id, validity)
         records.append(record)
-
-    invalid_count = total_count - count
-
-    print(count)
-    print('invalid')
-    print(invalid_count)
 
     return render_template('contact_details.html', contacts=records)
 
