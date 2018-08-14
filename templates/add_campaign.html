@@ -38,26 +38,59 @@
     <script>
         $(document).ready(function(){
 
-            part1Count = 160;
-            part2Count = 145;
-            part3Count = 152;
-
             $('#message').keyup(function(){
+                var str = $(this).val()
                 var chars = $(this).val().length;
-                messages = 0;
-                remaining = 0;
-                total = 0;
-            if (chars <= part1Count) {
-                messages = 1;
-                remaining = part1Count - chars;
-            } else if (chars <= (part1Count + part2Count)) {
-                messages = 2;
-                remaining = part1Count + part2Count - chars;
-            } else if (chars > (part1Count + part2Count)) {
-                moreM = Math.ceil((chars - part1Count - part2Count) / part3Count) ;
-                remaining = part1Count + part2Count + (moreM * part3Count) - chars;
-                messages = 2 + moreM;
-            }
+
+                for (var i = 0, n = str.length; i < n; i++) {
+                    console.log(str)
+                    if (str.charCodeAt( i ) > 255) {
+                        console.log('unicode')
+                        part1Count = 70;
+                        part2Count = 67;
+                        part3Count = 65;
+                        console.log(chars)
+                        messages = 0;
+                        remaining = 0;
+                        total = 0;
+                        if (chars <= part1Count) {
+                            messages = 1;
+                            remaining = part1Count - chars;
+                        } else if (chars <= (part1Count + part2Count)) {
+                            messages = 2;
+                            remaining = part1Count + part2Count - chars;
+                        } else if (chars > (part1Count + part2Count)) {
+                            moreM = Math.ceil((chars - part1Count - part2Count) / part3Count) ;
+                            console.log('Apple');
+                            console.log(moreM);
+                            remaining = part1Count + part2Count + (moreM * part3Count) - chars;
+                            messages = 2 + moreM;
+                        }
+                    }else {
+                        part1Count = 160;
+                        part2Count = 145;
+                        part3Count = 152;
+                        console.log(chars)
+                        messages = 0;
+                        remaining = 0;
+                        total = 0;
+                        if (chars <= part1Count) {
+                            messages = 1;
+                            remaining = part1Count - chars;
+                        } else if (chars <= (part1Count + part2Count)) {
+                            messages = 2;
+                            remaining = part1Count + part2Count - chars;
+                        } else if (chars > (part1Count + part2Count)) {
+                            moreM = Math.ceil((chars - part1Count - part2Count) / part3Count) ;
+                            console.log('Apple');
+                            console.log(moreM);
+                            remaining = part1Count + part2Count + (moreM * part3Count) - chars;
+                            messages = 2 + moreM;
+                        }
+                    }
+                }
+
+
             $('#remaining').text(remaining);
             $('#messages').text(messages);
             $('#total').text(chars);

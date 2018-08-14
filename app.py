@@ -54,13 +54,21 @@ class Contact(db.Model):
 
 @app.route('/')
 def index():
+    print(db)
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return "You are not logged in. <a href='/logout'>Logout</a>"
+        campaigns = Campaign.query.all()
+        return render_template('campaign.html', campaigns = campaigns)
 
 @app.route('/login', methods=['POST'])
 def login():
+    # Username = User.query.get('username')
+    # print(UJ)
+    # print(User.username, User.password)
+    query = User.query.filter_by(id=1).all()
+    print(query)
+    print(query.username)
     if request.form['username']  == 'admin' and request.form['password'] == 'admin':
         session['logged_in'] = True
         campaigns = Campaign.query.all()
