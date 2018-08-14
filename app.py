@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 import phonenumbers
 import datetime
 import json
+from flask_login import LoginManager, UserMixin
 
 app = Flask(__name__)
 app.secret_key = 'a random string'
@@ -13,7 +14,10 @@ migrate = Migrate(app, db)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-class User(db.Model):
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
@@ -21,6 +25,10 @@ class User(db.Model):
     def __init__(self, username, password):
         self.username = username
         self.password = password
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.ger(int(user_id))
 
 class Campaign(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -63,13 +71,9 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    # Username = User.query.get('username')
-    # print(UJ)
-    # print(User.username, User.password)
-    query = User.query.filter_by(id=1).all()
-    print(query)
-    print(query.username)
-    if request.form['username']  == 'admin' and request.form['password'] == 'admin':
+    user = User.query.filter_by(username='admin').first()
+    print(user.username)
+    if request.form['username']  == user.username and request.form['password'] == user.password:
         session['logged_in'] = True
         campaigns = Campaign.query.all()
         print(campaigns)
