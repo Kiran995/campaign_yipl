@@ -1,26 +1,16 @@
-from flask import Flask, render_template, session
-from flask import request, redirect, url_for, flash
-import datetime
-import os
-import csv
-import json
-import phonenumbers
-from flask_migrate import Migrate
-from collections import OrderedDict
-from flask import jsonify
+from flask import Flask, render_template, session, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
-#from app.views import app
-
-
-UPLOAD_FOLDER = './path/uploads'
-ALLOWED_EXTENSIONS = set(['csv'])
+from flask_migrate import Migrate
+import phonenumbers
+import datetime
+import json
 
 app = Flask(__name__)
 app.secret_key = 'a random string'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:kira@localhost/campaign'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 class User(db.Model):
@@ -34,8 +24,8 @@ class User(db.Model):
 
 class Campaign(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(80))
-    message = db.Column(db.String(255))
+    title = db.Column(db.String())
+    message = db.Column(db.String())
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     schedule = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     status = db.Column(db.String(20), default='Not Sent')
@@ -46,13 +36,12 @@ class Campaign(db.Model):
         self.message = message
         self.schedule = schedule
 
-
     def __repr__(self):
         return '<Campaign %r>' % self.title
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    number = db.Column(db.String(10))
+    number = db.Column(db.String())
     number_status = db.Column(db.String(20), default='Not Sent')
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'))
 
@@ -85,10 +74,6 @@ def login():
 def logout():
     session['logged_in'] = False
     return index()
-
-def allowed_file(filename):
-    print(filename)
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/add', methods=['GET','POST'])
 def add():
@@ -123,10 +108,12 @@ def added():
     current_datetime = datetime.datetime.now()
     scheduled_datetime = request.form['schedule']
     scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M")
+
     if (scheduled_datetime > current_datetime):
         camp.status = 'Queued'
     else:
         camp.status = 'Sent'
+
     db.session.add(camp)
     db.session.commit()
     print(camp.id)
@@ -138,8 +125,10 @@ def added():
     for item in data:
         # name = item['Name']
         number = item['Number']
-        contacts = Contact(number, camp.id)
-        db.session.add(contacts)
+        for number in phonenumbers.PhoneNumberMatcher(number, "NP"):
+            formatted_number = phonenumbers.format_number(number.number, phonenumbers.PhoneNumberFormat.E164)
+            contacts = Contact(formatted_number, camp.id)
+            db.session.add(contacts)
 
     db.session.commit()
     campaigns = Campaign.query.all()
@@ -151,15 +140,13 @@ def getContacts():
     print(id)
     records = []
 
+    camp = Campaign.query.filter_by(id=id).all()
+
     for rec in Contact.query.filter_by(campaign_id=id).all():
         record = rec.number
-        validity = "invalid"
-        for record in phonenumbers.PhoneNumberMatcher(record, "NP"):
-            validity = "valid"
-        print(rec.number, rec.campaign_id, validity)
         records.append(record)
 
-    return render_template('contact_details.html', contacts=records)
+    return render_template('contact_details.html', contacts=records, campaign=camp)
 
 @app.route('/duplicate_camp', methods=['POST', 'GET'])
 def duplicate_camp():

@@ -22,8 +22,13 @@
             <textarea name="message" id="message">{{Campaign_messages}}</textarea>
             <p><span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining</p>
             <p>Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span></p>
-            <p><label><b>Receive:</b></label>
+            <p><label><b>Choose csv file:</b></label>
             <input type='file' name='file' id="file"/></p>
+            <p><label>Send Immediately:</label></p>
+            <input type="radio" id='yes' name="send_now" checked>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="send_now">
+            <label for="no">No</label>
             <p><label><b>Send Time:</b></label>
             <input type="datetime-local" name="schedule" value='2019-06-12T19:30'></p>
             <input type="hidden" name="data" id="hidden">

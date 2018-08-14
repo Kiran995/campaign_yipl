@@ -2,11 +2,18 @@
 
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="./static/style.css">
         <title>Contact Detail</title>
     </head>
 
     <body>
         <div class="main">
+            <h2>Campaign Message</h2>
+            {% for message in campaign %}
+            <p>{{message.message}}</p>
+            {% endfor %}
+        <br/><br/>
+            <h2>Campaign Contacts</h2>
             <table>
                 <tr>
 
