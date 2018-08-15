@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5e6853-18c5-4d77-8dee-c47e17cf0e93" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0817bf5b-ec10-4746-ab4f-408246712351.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0817bf5b-ec10-4746-ab4f-408246712351.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -104,8 +103,8 @@
       <file leaf-file-name="workers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/workers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state relative-caret-position="171">
+              <caret line="12" column="116" selection-start-line="12" selection-start-column="116" selection-end-line="12" selection-end-column="116" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -287,7 +286,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32885906" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32885906" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.31208053" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.31208053" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32885906" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.16616085" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -580,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/contact">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2052">
@@ -597,10 +589,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/contact">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/workers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        <state relative-caret-position="171">
+          <caret line="12" column="116" selection-start-line="12" selection-start-column="116" selection-end-line="12" selection-end-column="116" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
