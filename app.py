@@ -51,6 +51,7 @@ class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.String())
     number_status = db.Column(db.String(20), default='Not Sent')
+    status_type = db.Column(db.Integer)
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'))
 
     def __init__(self, number, camp_id):
@@ -162,10 +163,24 @@ def getContacts():
 
 @app.route('/duplicate_camp', methods=['POST', 'GET'])
 def duplicate_camp():
-    id=request.args.get('campaign_details')
-    data = db.session.query(Campaign).filter_by(id=id).first()
-    print(id)
+    campaign_id=request.args.get('campaign_details')
+    data = db.session.query(Campaign).filter_by(id=campaign_id).first()
     return render_template('add_campaign.html', Campaign_title = data.title, Campaign_messages = data.message)
+
+@app.route('/dlr', methods=['POST','GET'])
+def dlr():
+    #import ipdb; ipdb.set_trace()
+    contact_id = request.args.get('id')
+    type = request.args.get('type')
+    print(id)
+    print(type)
+    contact = db.session.query(Campaign).filter_by(id=contact_id).first()
+    contact.status_type = type
+    if type == 1:
+        contact.number_status = 'Delivered to phone'
+    elif type == 8:
+        contact.number_status = 'Submitted to smsc'
+    print('a')
 
 if __name__ == '__main__':
     app.debug=True
