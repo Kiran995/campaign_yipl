@@ -122,10 +122,10 @@ def added():
     scheduled_datetime = request.form['schedule']
     scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M")
 
-    if (scheduled_datetime > current_datetime):
-        camp.status = 'Queued'
-    else:
-        camp.status = 'Sent'
+    # if (scheduled_datetime > current_datetime):
+    #     camp.status = 'Queued'
+    # else:
+    #     camp.status = 'Sent'
 
     db.session.add(camp)
     db.session.commit()

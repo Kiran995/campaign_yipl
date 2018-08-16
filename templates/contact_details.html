@@ -8,12 +8,17 @@
 
     <body>
         <div class="main">
-            <h2>Campaign Message</h2>
-            {% for message in campaign %}
-            <p>{{message.message}}</p>
+
+            {% for data in campaign %}
+            <h1>{{data.title}}</h1>
+            <h3>Campaign Message</h3>
+            <p>{{data.message}}</p>
+            <h3>Campaign Schedule Time</h3>
+            <p>{{data.schedule}}</p>
+            <h3>Campaign Status</h3>
+            <p>{{data.status}}</p>
             {% endfor %}
-        <br/><br/>
-            <h2>Campaign Contacts</h2>
+            <h3>Campaign Contacts</h3>
             <table>
                 <tr>
 
