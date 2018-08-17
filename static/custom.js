@@ -1,9 +1,32 @@
 $(document).ready(function() {
 
+    // $('#yes').click(function(){
+    //     var currentdate = new Date().toISOString().replace(/\..+/, '') ;
+    //     var time = $('#yes').val(currentdate);
+    //     console.log(time);
+    //     console.log('yes');
+    // });
+    //
+    // $('#no').click(function(e) {
+    //     e.preventDefault();
+    //     var schedule = $('#time').val();
+    //     var notime = $('#no').val(schedule);
+    //     console.log(notime);
+    //     console.log('no');
+    //
+    // });
+
     $('#save').click(function(e) {
         e.preventDefault();
 
-
+        if($('#time').val()==null){
+            var currentdate = new Date().toISOString().replace(/\..+/, '') ;
+            var time = $('#yes').val(currentdate);
+        }else{
+            var notime = $('#no').val($('#time').val());
+            console.log('******')
+            console.log(notime)
+        }
         Papa.parse($('#file')[0].files[0],{
             skipEmptyLines: true,
             header:true,

@@ -24,13 +24,14 @@
 
                     <th>Contact Number</th>
                     <th>Status</th>
+                    <th>Type</th>
                 </tr>
                 {% for contact in contacts %}
                 <tr>
 
-                        <td>{{contact}}</td>
-
-                        <td>{{validity}}</td>
+                        <td>{{contact.number}}</td>
+                        <td>{{contact.number_status}}</td>
+                        <td>{{contact.status_type}}</td>
                 </tr>
                 {% endfor %}
             </table>

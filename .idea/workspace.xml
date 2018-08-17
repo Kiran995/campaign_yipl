@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5e6853-18c5-4d77-8dee-c47e17cf0e93" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_campaign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_campaign.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/campaign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/campaign.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/contact_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -91,17 +96,11 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="176" column="58" selection-start-line="176" selection-start-column="58" selection-end-line="176" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contact_details.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/contact_details.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+            <state relative-caret-position="-854">
+              <caret line="122" column="55" selection-start-line="122" selection-start-column="55" selection-end-line="122" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#93#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +108,8 @@
       <file leaf-file-name="workers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/workers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            <state relative-caret-position="301">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -127,6 +126,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="add_campaign.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/add_campaign.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="campaign" pinned="false" current-in-tab="false">
         <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/campaign">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -136,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_campaign.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/add_campaign.html">
+      <file leaf-file-name="contact_details.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/contact_details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="808">
-              <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+            <state relative-caret-position="589">
+              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -151,7 +168,6 @@
     <findStrings>
       <find>save</find>
       <find>getnum</find>
-      <find>ipdb</find>
       <find>context.co</find>
       <find>true</find>
       <find>data</find>
@@ -159,6 +175,14 @@
       <find>current</find>
       <find>all</find>
       <find>status</find>
+      <find>camp</find>
+      <find>ipdb</find>
+      <find>get</find>
+      <find>contact_details</find>
+      <find>valid</find>
+      <find>title</find>
+      <find>schedule</find>
+      <find>checked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,13 +198,13 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b5ce28f9-fdb6-4ef2-8161-47f0f5f8b171/console.sql" />
         <option value="$PROJECT_DIR$/migrations/versions/4fbdfef48594_.py" />
         <option value="$PROJECT_DIR$/migrations/env.py" />
-        <option value="$PROJECT_DIR$/static/custom.js" />
-        <option value="$PROJECT_DIR$/templates/campaign.html" />
         <option value="$PROJECT_DIR$/etc/kannel/kannel.conf" />
+        <option value="$PROJECT_DIR$/templates/contact_details.html" />
+        <option value="$PROJECT_DIR$/templates/campaign.html" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/workers.py" />
         <option value="$PROJECT_DIR$/templates/add_campaign.html" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/templates/contact_details.html" />
+        <option value="$PROJECT_DIR$/static/custom.js" />
       </list>
     </option>
   </component>
@@ -204,6 +228,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,7 +266,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,18 +322,18 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32885906" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32885906" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32885906" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27684563" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32885906" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1828528" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18588771" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.30652505" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32928678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -507,13 +531,6 @@
     <entry file="file://$PROJECT_DIR$/static/papaparse.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/campaign.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/user/index/user_pkey">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -551,34 +568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/campaign">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_campaign.html">
+    <entry file="file://$PROJECT_DIR$/templates/contact_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="808">
-          <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/workers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="589">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -589,17 +582,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="176" column="58" selection-start-line="176" selection-start-column="58" selection-end-line="176" selection-end-column="58" />
+    <entry file="das://0817bf5b-ec10-4746-ab4f-408246712351/database/campaign/schema/public/table/campaign">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/contact_details.html">
+    <entry file="file://$PROJECT_DIR$/templates/campaign.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+        <state relative-caret-position="114">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-854">
+          <caret line="122" column="55" selection-start-line="122" selection-start-column="55" selection-end-line="122" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#93#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/workers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add_campaign.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
         </state>
       </provider>
     </entry>

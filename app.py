@@ -28,13 +28,12 @@ class User(UserMixin, db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.ger(int(user_id))
+    return User.query.get(int(user_id))
 
 class Campaign(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String())
     message = db.Column(db.String())
-    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     schedule = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     status = db.Column(db.String(20), default='Not Sent')
     address = db.relationship('Contact', backref='campaign')
@@ -118,15 +117,10 @@ def valid():
 @app.route('/added', methods=['GET','POST'])
 def added():
     camp = Campaign(request.form['title'], request.form['message'], request.form['schedule'])
-    current_datetime = datetime.datetime.now()
-    scheduled_datetime = request.form['schedule']
-    scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M")
-
-    # if (scheduled_datetime > current_datetime):
-    #     camp.status = 'Queued'
-    # else:
-    #     camp.status = 'Sent'
-
+    # current_datetime = datetime.datetime.now()
+    # scheduled_datetime = request.form['schedule']
+    # scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M:%S")
+    # pending_datetime = json.loads(scheduled_datetime)
     db.session.add(camp)
     db.session.commit()
     print(camp.id)
@@ -151,15 +145,20 @@ def added():
 def getContacts():
     id=request.args.get('campaign_details')
     print(id)
-    records = []
+    # records = []
 
-    camp = Campaign.query.filter_by(id=id).all()
+    campaign = Campaign.query.filter_by(id=id).all()
+    contacts = Contact.query.filter_by(campaign_id=id).all()
 
-    for rec in Contact.query.filter_by(campaign_id=id).all():
-        record = rec.number
-        records.append(record)
+    #import ipdb;ipdb.set_trace()
+    # for number in camp:
+    #     record = number
+    #     records.append(record)
+        # contacts.number = record
+        # db.session.add(contacts)
+        # db.session.commit()
 
-    return render_template('contact_details.html', contacts=records, campaign=camp)
+    return render_template('contact_details.html',campaign=campaign, contacts = contacts)
 
 @app.route('/duplicate_camp', methods=['POST', 'GET'])
 def duplicate_camp():
@@ -169,18 +168,23 @@ def duplicate_camp():
 
 @app.route('/dlr', methods=['POST','GET'])
 def dlr():
-    #import ipdb; ipdb.set_trace()
     contact_id = request.args.get('id')
     type = request.args.get('type')
-    print(id)
+    print('*'*20)
+    print(contact_id)
     print(type)
-    contact = db.session.query(Campaign).filter_by(id=contact_id).first()
+    contact = db.session.query(Contact).filter_by(id=contact_id).first()
     contact.status_type = type
-    if type == 1:
+    if type == '1':
+        print('type')
         contact.number_status = 'Delivered to phone'
-    elif type == 8:
+    elif type == '8':
+        print('no type')
         contact.number_status = 'Submitted to smsc'
-    print('a')
+
+    db.session.add(contact)
+    db.session.commit()
+    return 'a'
 
 if __name__ == '__main__':
     app.debug=True

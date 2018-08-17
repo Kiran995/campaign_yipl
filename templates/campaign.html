@@ -28,7 +28,7 @@
             <tr>
                 <td> <a href="{{url_for('getContacts', campaign_details=campaign.id)}}">{{campaign.title}}</a></td>
                 <td> {{campaign.message}}</td>
-                <td> {{campaign.created}}</td>
+                <td> {{campaign.schedule}}</td>
                 <td> {{campaign.status}}</td>
                 <td> <a href="{{url_for('duplicate_camp', campaign_details=campaign.id)}}">Duplicate</a></td>
             </tr>
