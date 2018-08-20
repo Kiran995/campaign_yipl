@@ -6,10 +6,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisites
 - python3
+- Kannel
 
 ## Installing
 - Clone the repository  
-`git@github.com:Kiran995/campaign_yipl.git`
+`git clone git@github.com:Kiran995/campaign_yipl.git`
 
 - Setup the pip package manager  
 `apt install python3-pip`
@@ -24,7 +25,16 @@ These instructions will get you a copy of the project up and running on your loc
 `source Campaign/bin/activate`
 	
 - Install from the requirements file  
-	`pip install -r requirements.txt`
+`pip install -r requirements.txt`
+
+- Create a database migration repository
+`flask db init`
+
+- Generate an initial migration
+`flask db migrate`
+
+- Then apply migration to the database
+`flask db upgrade`
 	
 ## Running the project
 `python workers.py`  
