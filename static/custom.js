@@ -18,9 +18,12 @@ $(document).ready(function() {
 
     $('#save').click(function(e) {
         e.preventDefault();
+        var currentdate = new Date().toISOString().replace(/\..+/, '');
+        console.log(currentdate);
 
-        if($('#time').val()==null){
-            var currentdate = new Date().toISOString().replace(/\..+/, '') ;
+        if($('#time').val()=='Null'){
+            var currentdate = new Date().toISOString().replace(/\..+/, '');
+            console.log(currentdate);
             var time = $('#yes').val(currentdate);
         }else{
             var notime = $('#no').val($('#time').val());
