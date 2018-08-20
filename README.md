@@ -27,13 +27,13 @@ These instructions will get you a copy of the project up and running on your loc
 - Install from the requirements file  
 `pip install -r requirements.txt`
 
-- Create a database migration repository
+- Create a database migration repository  
 `flask db init`
 
-- Generate an initial migration
+- Generate an initial migration  
 `flask db migrate`
 
-- Then apply migration to the database
+- Then apply migration to the database  
 `flask db upgrade`
 	
 ## Running the project
