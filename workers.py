@@ -6,7 +6,7 @@ from sqlalchemy.sql.expression import and_
 
 while 1:
     print('s')
-    # import ipdb;ipdb.set_trace()
+    #import ipdb;ipdb.set_trace()
     current_time = datetime.datetime.now()
     print(current_time)
     campaigns = db.session.query(Campaign).filter(and_(Campaign.schedule <= current_time, Campaign.status == 'Not Sent')).all()
@@ -18,8 +18,8 @@ while 1:
             number = campaign_contact.number
             contact_id = campaign_contact.id
             link = 'http://localhost:13013/cgi-bin/sendsms'
-            value = {'username' : 'simple', 'password' : 'simple123', 'from' : 100, 'to' : number, 'text' : campaign.message, 'dlr-mask' : 31, 'dlr-url' : 'http://localhost:5000/dlr?id={0}&type=%d'.format(contact_id)}
-            test = requests.get(link, params=value).encoding('ISO-8859-1')
+            value = {'username' : 'simple', 'password' : 'simple123', 'from' : 100, 'to' : number, 'coding' : '2', 'charset' : 'utf-8', 'text' : campaign.message, 'dlr-mask' : 31, 'dlr-url' : 'http://localhost:5000/dlr?id={0}&type=%d'.format(contact_id)}
+            test = requests.get(link, params=value)
             test.encoding = 'ISO-8859-1'
             print(test)
             campaign.status = 'Sent'

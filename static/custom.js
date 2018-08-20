@@ -21,7 +21,7 @@ $(document).ready(function() {
         var currentdate = new Date().toISOString().replace(/\..+/, '');
         console.log(currentdate);
 
-        if($('#time').val()=='Null'){
+        if($('#time').val()=='Now'){
             var currentdate = new Date().toISOString().replace(/\..+/, '');
             console.log(currentdate);
             var time = $('#yes').val(currentdate);
