@@ -71,9 +71,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    user = User.query.filter_by(username='admin').first()
-    print(user.username)
-    if request.form['username']  == user.username and request.form['password'] == user.password:
+    user = User.query.filter_by(username=request.form['username'], password=request.form['password']).first()
+    if user:
         session['logged_in'] = True
         campaigns = Campaign.query.all()
         print(campaigns)
@@ -87,11 +86,11 @@ def logout():
     session['logged_in'] = False
     return index()
 
-@app.route('/add', methods=['GET','POST'])
+@app.route('/add', methods=['POST'])
 def add():
     return render_template('add_campaign.html')
 
-@app.route('/valid', methods=['GET','POST'])
+@app.route('/valid', methods=['POST'])
 def valid():
 
     data = request.form['data']
@@ -114,13 +113,9 @@ def valid():
     return jsonify({'valid_count': valid_count, 'invalid_count': invalid_count})
 
 
-@app.route('/added', methods=['GET','POST'])
+@app.route('/added', methods=['POST'])
 def added():
     camp = Campaign(request.form['title'], request.form['message'], request.form['schedule'])
-    # current_datetime = datetime.datetime.now()
-    # scheduled_datetime = request.form['schedule']
-    # scheduled_datetime = datetime.datetime.strptime(scheduled_datetime, "%Y-%m-%dT%H:%M:%S")
-    # pending_datetime = json.loads(scheduled_datetime)
     db.session.add(camp)
     db.session.commit()
     print(camp.id)
