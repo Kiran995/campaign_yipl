@@ -1,4 +1,12 @@
- .camp{
+body {
+    font-family: 'open sans';
+}
+
+p{
+    font-size: 18px;
+}
+
+.camp{
     display: flex;
 }
 
@@ -8,9 +16,15 @@
     margin:20px;
 }
 
+.main{
+    margin-top: 90px;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-bottom: 50px;
+}
 
 table {
-    font-family: arial, sans-serif;
+    font-family: "open sans", sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -19,9 +33,21 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    font-size: 16px;
 }
 
 #message {
     height: 80px;
     width: 250px;
 }
+
+.inside-container{
+    text-align: center;
+    margin: 150px;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding: 30px;
+    border: 1px solid black;
+
+}
+

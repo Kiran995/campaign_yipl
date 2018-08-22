@@ -1,0 +1,32 @@
+body {
+    font-family: 'open sans', sans-serif;
+}
+
+.main{
+    margin-top: 90px;
+    margin-left: 110px;
+    margin-right: 110px;
+    border: solid #f7f7f9;
+    padding: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+}
+
+label{
+    font-size: 18px;
+}
+.hidden-form{
+    visibility:hidden;
+}
+.show-form{
+    visibility: visible !important;
+}
+
+.form-group{
+    padding-top: 10px;
+}
+
+.form-check-inline{
+    padding-top: 10px;
+}

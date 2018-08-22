@@ -6,15 +6,10 @@ $(document).ready(function() {
     //     console.log(time);
     //     console.log('yes');
     // });
-    //
-    // $('#no').click(function(e) {
-    //     e.preventDefault();
-    //     var schedule = $('#time').val();
-    //     var notime = $('#no').val(schedule);
-    //     console.log(notime);
-    //     console.log('no');
-    //
-    // });
+    $('.form-check-input').click(function(e) {
+        $(this).next().toggleClass('show-form');
+
+    });
 
     $('#save').click(function(e) {
         e.preventDefault();

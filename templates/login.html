@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Login </title>
-    </head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./static/style.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <title> Login </title>
     <body>
         {% if session['logged_in'] %}
         <p> You are already logged in!</p>
@@ -15,13 +26,20 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <form action = 'login' method='POST'>
-            <p><label><b>Username:</b></label></p>
-            <p><input type="text" name="username" required></p>
-            <p><label><b>Password:</b></label></p>
-            <p><input type="password" name="password" required></p>
-            <p><button type="submit">Login</button></p>
-        </form>
+        <div class="container">
+            <form action = 'login' method='POST'>
+                <div class = 'inside-container'>
+                    <div class = 'row'>
+                        <p><label><b>Username:&nbsp&nbsp&nbsp&nbsp</b></label><input type="text" name="username" required></p>
+                    </div>
+                    <div class = 'row'>
+                        <p><label><b>Password:&nbsp&nbsp&nbsp&nbsp</b></label><input type="password" name="password" required></p>
+                    </div>
+                        <p><button type="submit">Login</button></p>
+                </div>
+            </form>
+        </div>
+
         {% endif %}
 
     </body>

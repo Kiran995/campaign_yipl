@@ -4,42 +4,76 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="./static/style.css">
+        <link rel="stylesheet" type="text/css" href="./static/custom.css">
         <title> Add Campaign</title>
-        <script src="./static/bootstrap/js/bootstrap.js"></script>
-        <script src="./static/bootstrap/css/bootstrap.css"></script>
-        <script src="./static/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <script src="./static/messagecount.js"></script>
         <script src="./static/papaparse.min.js"></script>
         <script src="./static/custom.js"></script>
     </head>
     <body>
-        <h1> Add New Campaign </h1>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{url_for('index')}}">Campaign</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a class="btn" href="{{ url_for('add') }}">Add new campaign</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href='/logout'><span class="glyphicon glyphicon-user"></span>&nbspLogout</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
 
         {% if error %}
         <p><strong> Error: </strong> {{error}}</p>
         {% endif %}
-
-        <form id="add-campaign-form" action='added' method='POST' enctype='multipart/form-data'>
-            <input type="hidden" name="campaign_id" value="{{id}}">
-            <p><label><b>Campaign Title:</b></label>
-            <input type="text" name="title" value="{{Campaign_title}}" required></p>
-            <p><label><b>Campaign Message:</b></label>
-            <textarea name="message" id="message">{{Campaign_messages}}</textarea>
-            <p><span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining</p>
-            <p>Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span></p>
-            <p><label><b>Choose csv file:</b></label>
-            <input type='file' name='file' id="file"/></p>
-            <p><label>Send Immediately:</label></p>
-            <input type="radio" id='yes' name="schedule">
-            <label for="yes">Yes</label>
-            <input type="radio" id="no" name="schedule">
-            <label for="no">No</label>
-            <p><label><b>Send Time</b>(Edit this only if you want to send later):</label>
-            <input type="datetime-local" id="time" value="Now">Format: %Y-%m-%dT%H:%M:%S</p>
-            <input type="hidden" name="data" id="hidden">
-            <p><button type="submit" id="save">Save</button></p>
-        </form>
+        <div class="main">
+            <form id="add-campaign-form" action='added' method='POST' enctype='multipart/form-data'>
+                <input type="hidden" name="campaign_id" value="{{id}}">
+                <div class="form-group">
+                    <p><label>Campaign Title:</label></p>
+                    <input type="text" class="form-control" name="title" value="{{Campaign_title}}" required>
+                </div>
+                <div class="form-group">
+                    <p><label>Campaign Message:</label></p>
+                    <textarea name="message" class="form-control" id="message" rows="3">{{Campaign_messages}}</textarea>
+                    <span id="remaining">160</span>&nbsp;Character<span class="cplural">s</span> Remaining
+                    (Total&nbsp;<span id="messages">1</span>&nbsp;Message<span class="mplural">s</span>&nbsp;<span id="total">0</span>&nbsp;Character<span class="tplural">s</span>)
+                </div>
+                <div class="form-group">
+                    <p><label>Choose csv file:</label></p>
+                    <input type='file' class="form-control-file" name='file' id="file"/>
+                </div>
+                <div class="form-check form-check-inline">
+                    <p><label>Send Immediately:</label></p>
+                    <input type="radio" class="form-check-input" id='yes' name="schedule">
+                    <label for="yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="form-check-input" id="no" name="schedule">
+                    <label for="no">No</label>
+                </div>
+                <div class="form-group">
+                    <p><label>Choose required send time:</b></label></p>
+                    <input type="datetime-local" class="form-control" id="time" value="Now">
+                    <span>Format: %Y-%M-%DT%H:%M:%S (Edit this only if you want to send later)</span>
+                </div>
+                <input type="hidden" name="data" id="hidden">
+                <div class="form-group">
+                    <p><button type="submit" class="btn btn-primary" id="save">Save</button></p>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
 

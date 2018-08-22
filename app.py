@@ -86,7 +86,7 @@ def logout():
     session['logged_in'] = False
     return index()
 
-@app.route('/add', methods=['POST'])
+@app.route('/add')
 def add():
     return render_template('add_campaign.html')
 
