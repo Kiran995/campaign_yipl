@@ -1,3 +1,13 @@
+function hide() {
+        var div_ref = document.getElementById("id_textbox_1");
+        div_ref.style.visibility = "hidden";
+    }
+
+    function show() {
+        var div_ref = document.getElementById("id_textbox_1");
+        div_ref.style.visibility = "visible";
+    }
+
 $(document).ready(function() {
 
     // $('#yes').click(function(){
@@ -6,10 +16,7 @@ $(document).ready(function() {
     //     console.log(time);
     //     console.log('yes');
     // });
-    $('.form-check-input').click(function(e) {
-        $(this).next().toggleClass('show-form');
 
-    });
 
     $('#save').click(function(e) {
         e.preventDefault();

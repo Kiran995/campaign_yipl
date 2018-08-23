@@ -61,6 +61,7 @@ class Contact(db.Model):
         return '<Contact %r %r>' %(self.number, self.campaign_id)
 
 @app.route('/')
+@app.route('/index')
 def index():
     print(db)
     if not session.get('logged_in'):
@@ -76,7 +77,7 @@ def login():
         session['logged_in'] = True
         campaigns = Campaign.query.all()
         print(campaigns)
-        return render_template('campaign.html', campaigns=campaigns)
+        return redirect(url_for('index', campaigns=campaigns))
     else:
         flash('wrong password!')
         return index()
@@ -134,7 +135,7 @@ def added():
 
     db.session.commit()
     campaigns = Campaign.query.all()
-    return render_template('campaign.html', campaigns=campaigns)
+    return redirect(url_for('index', campaigns=campaigns))
 
 @app.route('/getContacts', methods=['POST', 'GET'])
 def getContacts():

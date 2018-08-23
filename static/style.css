@@ -1,9 +1,5 @@
 body {
-    font-family: 'open sans';
-}
-
-p{
-    font-size: 18px;
+    font-family: 'open sans', SansSerif;
 }
 
 .camp{
@@ -23,31 +19,51 @@ p{
     margin-bottom: 50px;
 }
 
-table {
-    font-family: "open sans", sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    font-size: 16px;
-}
-
-#message {
-    height: 80px;
-    width: 250px;
-}
-
 .inside-container{
     text-align: center;
     margin: 150px;
     margin-left: 350px;
     margin-right: 350px;
     padding: 30px;
-    border: 1px solid black;
+    border: solid #f7f7f9;
 
 }
 
+.main-contact{
+    margin-top: 90px;
+    margin-left: 110px;
+    margin-right: 110px;
+    border: solid #f7f7f9;
+    padding: 50px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+}
+
+.main-camp{
+    margin-top: 90px;
+    margin-left: 110px;
+    margin-right: 110px;
+    border: solid #f7f7f9;
+    padding: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+}
+
+.main-camp p{
+    font-size: 16px;
+}
+
+.form-group{
+    padding-top: 10px;
+}
+
+.form-check-inline{
+    padding-top: 10px;
+}
+
+
+.text-inline .form-group{
+    padding-right: 100px;
+}
