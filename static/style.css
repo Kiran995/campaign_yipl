@@ -21,12 +21,15 @@ body {
 
 .inside-container{
     text-align: center;
-    margin: 150px;
     margin-left: 350px;
     margin-right: 350px;
     padding: 30px;
     border: solid #f7f7f9;
 
+}
+
+.container h1{
+    padding-top: 120px;
 }
 
 .main-contact{
