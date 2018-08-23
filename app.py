@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flaskext.noextref import NoExtRef
 import phonenumbers
 import datetime
 import json
@@ -63,7 +64,6 @@ class Contact(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-    print(db)
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
@@ -75,9 +75,7 @@ def login():
     user = User.query.filter_by(username=request.form['username'], password=request.form['password']).first()
     if user:
         session['logged_in'] = True
-        campaigns = Campaign.query.all()
-        print(campaigns)
-        return redirect(url_for('index', campaigns=campaigns))
+        return redirect(url_for('index'))
     else:
         flash('wrong password!')
         return index()
@@ -93,10 +91,8 @@ def add():
 
 @app.route('/valid', methods=['POST'])
 def valid():
-
     data = request.form['data']
     data = json.loads(data)
-    print(data)
 
     valid_count = 0
     invalid_count = 0
@@ -119,8 +115,6 @@ def added():
     camp = Campaign(request.form['title'], request.form['message'], request.form['schedule'])
     db.session.add(camp)
     db.session.commit()
-    print(camp.id)
-
     data = request.form['data']
     data = json.loads(data)
     print(data)
@@ -134,13 +128,11 @@ def added():
             db.session.add(contacts)
 
     db.session.commit()
-    campaigns = Campaign.query.all()
-    return redirect(url_for('index', campaigns=campaigns))
+    return redirect(url_for('index'))
 
 @app.route('/getContacts', methods=['POST', 'GET'])
 def getContacts():
     id=request.args.get('campaign_details')
-    print(id)
     # records = []
 
     campaign = Campaign.query.filter_by(id=id).all()
@@ -171,6 +163,7 @@ def dlr():
     print(type)
     contact = db.session.query(Contact).filter_by(id=contact_id).first()
     contact.status_type = type
+
     if type == '1':
         print('type')
         contact.number_status = 'Delivered to phone'
