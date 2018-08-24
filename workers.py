@@ -18,9 +18,14 @@ while 1:
             number = campaign_contact.number
             contact_id = campaign_contact.id
             link = 'http://localhost:13013/cgi-bin/sendsms'
-            value = {'username' : 'simple', 'password' : 'simple123', 'from' : 100, 'to' : number, 'coding' : '2', 'charset' : 'utf-8', 'text' : campaign.message, 'dlr-mask' : 31, 'dlr-url' : 'http://localhost:5000/dlr?id={0}&type=%d'.format(contact_id)}
+            value = {'username' : 'simple', 'password' : 'simple123', 'from' : 100, 'to' : number, 'coding' : '2', 'charset' : 'utf-16BE', 'text' : campaign.message, 'dlr-mask' : 31, 'dlr-url' : 'http://localhost:5000/dlr?id={0}&type=%d'.format(contact_id)}
             test = requests.get(link, params=value)
-            test.encoding = 'ISO-8859-1'
+            test.encoding = 'utf-8'
+            print(test.encoding)
+            print('code')
+            print(test.headers['content-type'])
+            print(test.status_code)
+            print('test')
             print(test)
             campaign.status = 'Sent'
             db.session.add(campaign)
